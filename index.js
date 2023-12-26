@@ -11,10 +11,8 @@ const app =  express();
 
 app.use(express.json());
 app.use(cors());
-app.get("/",(req,res)=>{
-    res.send("working")
-    console.log("working");
-})
+
+ 
 app.use("/auth", authRouter);
 app.use("/notice", noticeRouter)
 
