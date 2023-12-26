@@ -53,11 +53,12 @@ export const getNoticeByIdContrroler = async (req, res) => {
   }
 };
 
+
 export const updateNoticeController = async(req,res)=>{
     try {
         const { id } = req.params;
         const { title, body, category } = req.body;
-    
+   
         const notice = await NoticeModel.findByIdAndUpdate(
           id,
           { title, body, category },
@@ -75,6 +76,7 @@ export const updateNoticeController = async(req,res)=>{
         res.status(500).json({ message: 'Internal Server Error' });
       }
 }
+
 
 export const deleteNoticeController = async(req,res)=>{
     try {
