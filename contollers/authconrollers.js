@@ -9,7 +9,7 @@ export const registerController = async(req,res)=>{
 
     try {
         const { name, email, password, phone_number, department } = req.body;
-    
+   
      
         const existUser = await UserModel.findOne({ email });
 
