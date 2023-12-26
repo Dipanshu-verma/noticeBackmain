@@ -26,7 +26,8 @@ export const createNoticeController = async(req,res)=>{
         const { title, body, category } = req.body;
         const userId = req.userId;  
     
-        
+       
+
         const notice = await NoticeModel.create({ title, body, category, user: userId });
     
         res.status(201).json(notice);
@@ -39,8 +40,9 @@ export const createNoticeController = async(req,res)=>{
 export const getNoticeByIdContrroler = async (req, res) => {
   try {
     const { id } = req.params;
-    const notice = await NoticeModel.findById(id)
-
+     
+    const notice = await NoticeModel.find({user:id})
+    
     if (!notice) {
       return res.status(404).json({ message: 'Notice not found please find' });
     }
@@ -51,7 +53,7 @@ export const getNoticeByIdContrroler = async (req, res) => {
   }
 };
 
-export const updateNoticeController  =async(req,res)=>{
+export const updateNoticeController = async(req,res)=>{
     try {
         const { id } = req.params;
         const { title, body, category } = req.body;
