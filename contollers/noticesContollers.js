@@ -36,6 +36,21 @@ export const createNoticeController = async(req,res)=>{
       }
 }
 
+export const getNoticeByIdContrroler = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const notice = await NoticeModel.findById(id)
+
+    if (!notice) {
+      return res.status(404).json({ message: 'Notice not found please find' });
+    }
+    res.status(200).json(notice);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
 export const updateNoticeController  =async(req,res)=>{
     try {
         const { id } = req.params;

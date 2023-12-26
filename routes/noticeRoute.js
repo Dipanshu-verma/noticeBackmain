@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createNoticeController,updateNoticeController,  getNoticesController, deleteNoticeController, } from "../contollers/noticesContollers.js";
+import { createNoticeController,updateNoticeController,  getNoticesController, deleteNoticeController, getNoticeByIdContrroler, } from "../contollers/noticesContollers.js";
 import jwt from "jsonwebtoken"
 import dotenv from "dotenv";
 dotenv.config();
@@ -28,6 +28,8 @@ noticeRouter.use(verifyToken)
 
 noticeRouter.get('/',getNoticesController);
 noticeRouter.post('/',createNoticeController);
+noticeRouter.get('/:id', getNoticeByIdContrroler);
+
 noticeRouter.put('/:id',verifyToken, updateNoticeController);
 noticeRouter.delete('/:id',verifyToken, deleteNoticeController);
 
